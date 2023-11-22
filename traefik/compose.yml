@@ -15,6 +15,16 @@ services:
     restart: unless-stopped
     depends_on:
     - socket_proxy
+  whoami:
+    image: containous/whoami
+    container_name: whoami
+    labels:
+      - "traefik.enable=true" # Enable traefik to this container
+      - "traefik.http.routers.whoami.rule=Host(`whoami.localhost`)" # set the domain using a router rule
+      - "traefik.http.routers.whoami.entrypoints=web" # set the entrypoint to web (http)
+    networks:
+    - traefik_public
+    restart: unless-stopped
 
   # socket proxy is used to allow traefik to interact with the docker in a safe way
   socket_proxy:
