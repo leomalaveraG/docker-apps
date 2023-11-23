@@ -7,9 +7,20 @@ api:
 entryPoints:
   web:
     address: ":80"
+  websecure:
+    address: ":443"
     
 providers:
   docker:
     endpoint: "tcp://socket_proxy:2375"
     exposedByDefault: false
     network: socket_proxy
+
+certificatesResolvers:
+  lets-encr:
+    acme:
+      caServer: https://acme-staging-v02.api.letsencrypt.org/directory
+      storage: /etc/traefik/acme.json
+      email: johndoe@apple.com
+      httpChallenge:
+        entryPoint: web
