@@ -5,7 +5,7 @@
 
 ## Running Traefik
 
-Requires docker requires [Docker Engine](https://docker.com/) 19.03.0+ to run.
+Requires [Docker Engine](https://docker.com/) 19.03.0+ to run.
 
 Create networks
 
